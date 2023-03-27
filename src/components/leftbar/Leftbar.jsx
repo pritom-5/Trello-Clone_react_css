@@ -3,38 +3,33 @@ import UICtx from "../../context/uiContext/UICtx";
 import LeftBarDesktop from "./LeftBarDesktop";
 import LeftBarSmall from "./LeftBarSmall";
 import css from "./Leftbar.module.css";
-
-const dummyData = [
-  { name: "board1", isActive: true },
-  { name: "board2", isActive: false },
-  { name: "board3", isActive: false },
-  { name: "board3", isActive: false },
-  { name: "board3", isActive: false },
-  { name: "board3", isActive: false },
-  { name: "board3", isActive: false },
-  { name: "board3", isActive: false },
-  { name: "board3", isActive: false },
-  { name: "board3", isActive: false },
-  { name: "board3", isActive: false },
-];
+import DataCtx from "../../context/dataContext/DataCtx";
+import boardChangeHadnlerFn from "../../hooks/boardChangeHandlerFn";
 
 export default function LeftBar() {
   const { isDesktop } = useContext(UICtx);
 
   return (
-    <div id="leftbar_section">
-      {isDesktop ? <LeftBarDesktop /> : <LeftBarSmall />}
-    </div>
+    <div id="leftbar">{isDesktop ? <LeftBarDesktop /> : <LeftBarSmall />}</div>
   );
 }
 
 export function LeftBarRender() {
+  const { data, setData } = useContext(DataCtx);
+  // count boards
+  const boardsCount = data.boards.length;
+
+  // change board on click
+  const boardChangeHandler = (index) => {
+    // call function to change isActive
+    boardChangeHadnlerFn(index, data, setData);
+  };
   return (
     <Fragment>
       <div id="board_count" className={`header_3 ${css.board_count}`}>
-        ALL BOARDS (3)
+        ALL BOARDS ({boardsCount})
       </div>
-      {dummyData.map((item, index) => (
+      {data.boards.map((item, index) => (
         <div
           id="board_section"
           key={index}
@@ -43,6 +38,7 @@ export function LeftBarRender() {
               ? `${css.board_section} ${css.active} pointer`
               : `${css.board_section} pointer`
           }
+          onClick={() => boardChangeHandler(index)}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +64,7 @@ export function LeftBarRender() {
           </div>
         </div>
       ))}
-      <button className={`btn ${css.create_board}`}>Create New Board</button>
+      <button className={`${css.create_board} btn`}>Create New Board</button>
     </Fragment>
   );
 }

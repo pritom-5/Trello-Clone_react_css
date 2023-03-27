@@ -19,6 +19,7 @@
 
   /* border radius */
   --border-radius: 1rem;
+  --border-radius-0: 0.5rem;
 
   /* box shadow */
 
@@ -57,9 +58,7 @@ body {
   cursor: pointer;
   transition: background-color 0.25s;
   display: block;
-  margin: 0;
   outline: 0;
-  padding: 0;
   background-color: var(--bg-btn, var(--green-600));
   color: var(--text-btn, var(--white-100));
   padding: 0.5rem 1rem;

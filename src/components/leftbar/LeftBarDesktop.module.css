@@ -1,8 +1,9 @@
 .left_bar_desktop {
-  width: 13rem;
-  position: absolute;
+  width: 15rem;
+  position: fixed;
   top: 0;
   left: 0;
+  bottom: 0;
   margin-top: 5rem;
   height: calc(100vh - 5rem);
   overflow: scroll;

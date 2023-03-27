@@ -6,10 +6,13 @@ import UICtx from "./context/uiContext/UICtx";
 import Topbar from "./components/topbar/Topbar";
 import Test from "./test/Test";
 import LeftBar from "./components/leftbar/Leftbar";
+import Board from "./components/board/Board";
 
 function App() {
   const { isDesktopHandler } = useContext(UICtx);
+  // function to determine whether it's desktop or not. UICtx
   isDesktopHandler();
+
   return (
     <div>
       {/* <Test /> */}
@@ -18,6 +21,9 @@ function App() {
 
       {/* left bar */}
       <LeftBar />
+
+      {/* board */}
+      <Board />
     </div>
   );
 }

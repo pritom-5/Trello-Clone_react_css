@@ -2,9 +2,15 @@ import css from "./Topbar.module.css";
 import { useContext } from "react";
 import UICtx from "../../context/uiContext/UICtx";
 import wheel from "../../assets/wheel.svg";
+import getActiveBoardNameIndex from "../../hooks/getActiveBoardNameIndex";
+import DataCtx from "../../context/dataContext/DataCtx";
 
 export default function () {
+  const { data } = useContext(DataCtx);
   const { isDesktop } = useContext(UICtx);
+
+  // get active board name
+  const { activeBoardName } = getActiveBoardNameIndex(data);
   return (
     <div id="topbar_section">
       <div id="topbar_container" className={css.topbar_container}>
@@ -16,7 +22,7 @@ export default function () {
           className={`${css.flex_1} ${css.board_name_section}`}
         >
           <div id="board_name" className="header_1">
-            Board Name
+            {activeBoardName}
           </div>
           {isDesktop ? (
             ""

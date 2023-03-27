@@ -11,7 +11,6 @@ export default function UICtxProvider({ children }) {
 
     useEffect(() => {
       window.addEventListener("resize", updateMedia);
-      console.log("handler");
       return () => window.removeEventListener("resize", updateMedia);
     });
   };
