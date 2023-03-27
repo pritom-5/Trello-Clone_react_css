@@ -1,0 +1,29 @@
+.board_section {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  padding-block: 1rem;
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  transition: background-color 0.25s;
+}
+.board_section:hover {
+  background-color: var(--white-300);
+  color: var(--green-600);
+}
+.active {
+  background-color: var(--green-600);
+  color: var(--white-300);
+}
+
+.create_board {
+  margin-block: 1rem;
+  margin-inline: auto;
+}
+
+.board_count {
+  text-align: center;
+  margin-block: 1rem;
+}

@@ -1,0 +1,21 @@
+.logo_container {
+  width: 72px;
+  aspect-ratio: 1/1;
+  align-self: center;
+}
+.topbar_container {
+  display: grid;
+  grid-template-columns: 5rem auto max-content max-content;
+  gap: 0.5rem;
+  align-items: center;
+  margin-inline: auto;
+  max-width: 90%;
+}
+.flex_1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.board_name_section {
+  justify-self: start;
+}
