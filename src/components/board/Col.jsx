@@ -13,6 +13,12 @@ export default function Col({ colItem, colIndex }) {
   // onDrop
   const dropHandler = (e) => {
     const CardData = JSON.parse(e.dataTransfer.getData("text"));
+
+    // check if drpping in the same zone or not
+    // if droppingin same zone just return
+    if (CardData.colIndex === colIndex) {
+      return;
+    }
     dragCardHandlerFn({ ...CardData, targetCol: colIndex }, data, setData);
   };
 
