@@ -47,7 +47,7 @@ export function LeftBarRender() {
             height="24"
             viewBox="0 0 24 24"
             stroke-width="2"
-            stroke="grey"
+            stroke="#ffaed7"
             fill="none"
             stroke-linecap="round"
             stroke-linejoin="round"

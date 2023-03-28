@@ -1,9 +1,10 @@
 .board {
   --default-margin: 1rem;
   margin-left: var(--margin-left, 1rem);
+  margin-block: 2rem;
   display: flex;
   gap: 3rem;
 }
 .desktop {
-  --margin-left: 15rem;
+  --margin-left: 18rem;
 }

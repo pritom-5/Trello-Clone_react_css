@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import DataCtx from "../../context/dataContext/DataCtx";
+import ModalCtx from "../../context/modalContext/ModalCtx";
 import addTaskHandlerFn from "../../hooks/addTaskHandlerFn";
 import editTaskHandlerFn from "../../hooks/editTaskHandlerFn";
 import css from "./TaskForm.module.css";
@@ -24,6 +25,7 @@ export default function TaskForm({
 
   // context to get data and set data
   const { data: dataObj, setData } = useContext(DataCtx);
+  const { toggleHandler } = useContext(ModalCtx);
   // form submit handler
   const submitHandler = (data) => {
     if (taskType === "edit") {
@@ -34,9 +36,11 @@ export default function TaskForm({
         activeColIndex,
         activeTaskIndex
       );
+      toggleHandler("editTask");
     }
     if (taskType === "add") {
       addTaskHandlerFn(dataObj, setData, data);
+      toggleHandler("newTask");
     }
   };
   return (

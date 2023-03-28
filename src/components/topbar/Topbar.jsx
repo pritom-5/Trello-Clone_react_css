@@ -4,13 +4,25 @@ import UICtx from "../../context/uiContext/UICtx";
 import wheel from "../../assets/wheel.svg";
 import getActiveBoardNameIndex from "../../hooks/getActiveBoardNameIndex";
 import DataCtx from "../../context/dataContext/DataCtx";
+import ModalCtx from "../../context/modalContext/ModalCtx";
 
 export default function () {
   const { data } = useContext(DataCtx);
   const { isDesktop } = useContext(UICtx);
+  const { toggleHandler } = useContext(ModalCtx);
 
   // get active board name
   const { activeBoardName } = getActiveBoardNameIndex(data);
+
+  // add new task handler
+  const addNewTaskHandler = () => {
+    toggleHandler("newTask");
+  };
+
+  // show nav on click
+  const showNavHandler = () => {
+    toggleHandler("nav");
+  };
   return (
     <div id="topbar_section">
       <div id="topbar_container" className={css.topbar_container}>
@@ -27,7 +39,7 @@ export default function () {
           {isDesktop ? (
             ""
           ) : (
-            <div id="drop_btn" className="pointer">
+            <div id="drop_btn" className="pointer" onClick={showNavHandler}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="icon icon-tabler icon-tabler-chevron-down"
@@ -46,7 +58,11 @@ export default function () {
             </div>
           )}
         </div>
-        <button id="add_new_task_button" className={`btn ${css.flex_1}`}>
+        <button
+          id="add_new_task_button"
+          className={`btn ${css.flex_1}`}
+          onClick={addNewTaskHandler}
+        >
           {isDesktop ? (
             `+ Add New Task`
           ) : (

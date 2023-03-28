@@ -12,10 +12,10 @@
 }
 .board_section:hover {
   background-color: var(--white-300);
-  color: var(--green-600);
+  color: var(--pink-600);
 }
 .active {
-  background-color: var(--green-600);
+  background-color: var(--pink-600);
   color: var(--white-300);
 }
 

@@ -9,9 +9,14 @@ import LeftBar from "./components/leftbar/Leftbar";
 import Board from "./components/board/Board";
 import AddNewTask from "./components/inputs/AddNewTask";
 import EditTask from "./components/inputs/EditTask";
+import ModalCtx from "./context/modalContext/ModalCtx";
+import CardDetails from "./components/cardDetails/CardDetails";
+import DataCtx from "./context/dataContext/DataCtx";
 
 function App() {
   const { isDesktopHandler } = useContext(UICtx);
+  const { modalObj } = useContext(ModalCtx);
+  const { showEditItemForm, showAddItemForm, showTaskDetails } = modalObj;
   // function to determine whether it's desktop or not. UICtx
   isDesktopHandler();
 
@@ -28,10 +33,13 @@ function App() {
       <Board />
 
       {/* add new task */}
-      {/* <AddNewTask /> */}
+      {showAddItemForm && <AddNewTask />}
 
       {/* edit task */}
-      <EditTask />
+      {showEditItemForm && <EditTask />}
+
+      {/* task details */}
+      {showTaskDetails && <CardDetails />}
     </div>
   );
 }

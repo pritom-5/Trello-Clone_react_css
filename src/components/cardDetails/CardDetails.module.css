@@ -1,0 +1,33 @@
+.crossed {
+  text-decoration: line-through;
+}
+.flex_2_col {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.flex_1 {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+.subtask {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+input {
+  height: 1rem;
+  width: 1rem;
+  max-width: 2rem;
+}
+input:checked {
+  accent-color: var(--pink-100);
+}
+.label {
+  width: 80%;
+}
+.card_details_section {
+  padding-inline: 2rem;
+}
