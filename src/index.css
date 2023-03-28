@@ -49,7 +49,6 @@ h1 {
 body {
   background-color: var(--white-300);
 }
-
 .btn {
   border: 1px solid transparent;
   font-size: 1em;
@@ -66,8 +65,9 @@ body {
   border-bottom-right-radius: 1.5rem;
   border-bottom-left-radius: 1.5rem;
   border-top-left-radius: 1.5rem;
+  width: fit-content;
 }
-button:hover {
+.btn:hover {
   background-color: var(--text-btn, var(--white-100));
   color: var(--bg-btn, var(--green-600));
 }
@@ -97,4 +97,15 @@ button:focus-visible {
 /* cursor pointer */
 .pointer {
   cursor: pointer;
+}
+
+/* reset input */
+input,
+textarea {
+  outline: none;
+  border: none;
+  width: 100%;
+}
+input:focus {
+  border-bottom: var(--green-600);
 }

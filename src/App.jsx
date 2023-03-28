@@ -7,6 +7,8 @@ import Topbar from "./components/topbar/Topbar";
 import Test from "./test/Test";
 import LeftBar from "./components/leftbar/Leftbar";
 import Board from "./components/board/Board";
+import AddNewTask from "./components/inputs/AddNewTask";
+import EditTask from "./components/inputs/EditTask";
 
 function App() {
   const { isDesktopHandler } = useContext(UICtx);
@@ -24,6 +26,12 @@ function App() {
 
       {/* board */}
       <Board />
+
+      {/* add new task */}
+      {/* <AddNewTask /> */}
+
+      {/* edit task */}
+      <EditTask />
     </div>
   );
 }
