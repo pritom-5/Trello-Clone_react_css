@@ -1,5 +1,5 @@
 import css from "./Topbar.module.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import UICtx from "../../context/uiContext/UICtx";
 import wheel from "../../assets/wheel.svg";
 import getActiveBoardNameIndex from "../../hooks/getActiveBoardNameIndex";
@@ -7,6 +7,7 @@ import DataCtx from "../../context/dataContext/DataCtx";
 import ModalCtx from "../../context/modalContext/ModalCtx";
 
 export default function () {
+  const [showBoardOption, setShowBoardOption] = useState(false);
   const { data } = useContext(DataCtx);
   const { isDesktop } = useContext(UICtx);
   const { toggleHandler } = useContext(ModalCtx);
@@ -22,6 +23,18 @@ export default function () {
   // show nav on click
   const showNavHandler = () => {
     toggleHandler("nav");
+  };
+
+  const showBoardOptionsHandler = () => {
+    setShowBoardOption(!showBoardOption);
+  };
+
+  const showTaskEditHandler = () => {
+    toggleHandler("editBoardForm");
+  };
+
+  const showDeleteConfirmHandler = () => {
+    return;
   };
   return (
     <div id="topbar_section">
@@ -84,7 +97,11 @@ export default function () {
             </svg>
           )}
         </button>
-        <div id="edit_del_board_brn" className="pointer">
+        <div
+          id="edit_del_board_brn"
+          className="pointer"
+          onClick={showBoardOptionsHandler}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="icon icon-tabler icon-tabler-dots-vertical"
@@ -104,6 +121,17 @@ export default function () {
           </svg>
         </div>
       </div>
+      {showBoardOption && (
+        <div id="options_section" className={css.options_section}>
+          {/* on edit button click remove details modal and open task edit modal */}
+          <button className="btn" onClick={showTaskEditHandler}>
+            edit
+          </button>
+          <button className="btn" onClick={showDeleteConfirmHandler}>
+            delete
+          </button>
+        </div>
+      )}
     </div>
   );
 }

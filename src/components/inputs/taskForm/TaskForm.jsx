@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
-import DataCtx from "../../context/dataContext/DataCtx";
-import ModalCtx from "../../context/modalContext/ModalCtx";
-import addTaskHandlerFn from "../../hooks/addTaskHandlerFn";
-import editTaskHandlerFn from "../../hooks/editTaskHandlerFn";
+import DataCtx from "../../../context/dataContext/DataCtx";
+import ModalCtx from "../../../context/modalContext/ModalCtx";
+import addTaskHandlerFn from "../../../hooks/addTaskHandlerFn";
+import editTaskHandlerFn from "../../../hooks/editTaskHandlerFn";
 import css from "./TaskForm.module.css";
 
 export default function TaskForm({

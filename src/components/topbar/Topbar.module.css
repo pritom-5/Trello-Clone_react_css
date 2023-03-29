@@ -22,3 +22,15 @@
 .board_name_section {
   justify-self: start;
 }
+
+.options_section {
+  position: absolute;
+  top: 4rem;
+  right: 2rem;
+  background-color: var(--pink-100);
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  z-index: 2;
+  border-radius: var(--border-radius-0);
+}

@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import ModalCtx from "../../context/modalContext/ModalCtx";
-import Modal from "../UI/Modal";
+import ModalCtx from "../../../context/modalContext/ModalCtx";
+import Modal from "../../UI/Modal";
 import TaskForm from "./TaskForm";
 
 const initialFormValues = {

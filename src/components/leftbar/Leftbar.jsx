@@ -5,6 +5,7 @@ import LeftBarSmall from "./LeftBarSmall";
 import css from "./Leftbar.module.css";
 import DataCtx from "../../context/dataContext/DataCtx";
 import boardChangeHadnlerFn from "../../hooks/boardChangeHandlerFn";
+import ModalCtx from "../../context/modalContext/ModalCtx";
 
 export default function LeftBar() {
   const { isDesktop } = useContext(UICtx);
@@ -16,6 +17,7 @@ export default function LeftBar() {
 
 export function LeftBarRender() {
   const { data, setData } = useContext(DataCtx);
+  const { toggleHandler } = useContext(ModalCtx);
   // count boards
   const boardsCount = data.boards.length;
 
@@ -23,6 +25,10 @@ export function LeftBarRender() {
   const boardChangeHandler = (index) => {
     // call function to change isActive
     boardChangeHadnlerFn(index, data, setData);
+  };
+
+  const createBoardHandler = () => {
+    toggleHandler("showBoardForm");
   };
   return (
     <Fragment>
@@ -64,7 +70,12 @@ export function LeftBarRender() {
           </div>
         </div>
       ))}
-      <button className={`${css.create_board} btn`}>Create New Board</button>
+      <button
+        className={`${css.create_board} btn`}
+        onClick={createBoardHandler}
+      >
+        Create New Board
+      </button>
     </Fragment>
   );
 }

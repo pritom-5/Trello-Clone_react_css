@@ -9,7 +9,8 @@ export default function CardDetails() {
   // get data and set data from context
   const { data, setData, cardDetailsState } = useContext(DataCtx);
 
-  const { toggleHandler } = useContext(ModalCtx);
+  const { modalObj, toggleHandler } = useContext(ModalCtx);
+  const { showDelEditOptions } = modalObj;
 
   // destructure data from props
   const { boardIndex, colIndex, cardIndex } = cardDetailsState;
@@ -29,17 +30,46 @@ export default function CardDetails() {
     toggleHandler("details");
   };
 
+  const showOptionsHandler = () => {
+    toggleHandler("options");
+  };
+
+  const showTaskEditHandler = () => {
+    toggleHandler("detailsOffEditTaskOn");
+  };
+
+  const showDeleteConfirmHandler = () => {
+    toggleHandler("delConfirmTaskDetails");
+  };
   return (
     <Modal modalFn={toggleHandler} type="details">
       <div
         id="card_details_section"
         className={`${css.flex_2_col} ${css.card_details_section}`}
       >
-        <div id="title_section" className={css.flex_1}>
+        <div
+          id="title_section"
+          className={`${css.flex_1} ${css.title_section}`}
+        >
           <div id="title" className="header_1">
             {cardState.title}
           </div>
-          <button className="btn">options</button>
+          <button className="btn" onClick={showOptionsHandler}>
+            options
+          </button>
+
+          {/* options section */}
+          {showDelEditOptions && (
+            <div id="options_section" className={css.options_section}>
+              {/* on edit button click remove details modal and open task edit modal */}
+              <button className="btn" onClick={showTaskEditHandler}>
+                edit
+              </button>
+              <button className="btn" onClick={showDeleteConfirmHandler}>
+                delete
+              </button>
+            </div>
+          )}
         </div>
         {!!cardState.description.length && (
           <div id="desc_section" className={css.flex_2_col}>
@@ -54,8 +84,9 @@ export default function CardDetails() {
             Subtasks
           </div>
           {cardState.subtasks.map((item, index) => (
-            <div id="subtask" className={css.subtask}>
+            <div id="subtask" className={css.subtask} key={index}>
               <input
+                className={css.checkbox}
                 type="checkbox"
                 name={item.title}
                 id={item.title}

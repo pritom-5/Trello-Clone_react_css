@@ -17,12 +17,12 @@
   align-items: center;
   gap: 2rem;
 }
-input {
+.checkbox {
   height: 1rem;
   width: 1rem;
   max-width: 2rem;
 }
-input:checked {
+.checkbox:checked {
   accent-color: var(--pink-100);
 }
 .label {
@@ -30,4 +30,19 @@ input:checked {
 }
 .card_details_section {
   padding-inline: 2rem;
+}
+.title_section {
+  position: relative;
+}
+/* options section */
+.options_section {
+  position: absolute;
+  z-index: 5;
+  right: 0;
+  top: 3rem;
+  display: flex;
+  gap: 1rem;
+  background-color: var(--pink-100);
+  padding: 1rem 2rem;
+  border-radius: var(--border-radius-0);
 }

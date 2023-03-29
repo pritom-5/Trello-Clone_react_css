@@ -1,0 +1,17 @@
+.new_board_form_section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-inline: 2rem;
+}
+
+.flex_1_col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.flex_1 {
+  display: flex;
+  gap: 1rem;
+}

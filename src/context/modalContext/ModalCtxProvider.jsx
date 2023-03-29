@@ -7,6 +7,10 @@ export default function ModalCtxProvider({ children }) {
     showEditItemForm: false,
     showNav: false,
     showTaskDetails: false,
+    showDelEditOptions: false,
+    toggleDelConfirm: false,
+    toggleAddBoardForm: false,
+    toggleEditBoardForm: false,
   });
 
   // add task form toggle
@@ -21,6 +25,22 @@ export default function ModalCtxProvider({ children }) {
       modalObj0.showEditItemForm = !modalObj0.showEditItemForm;
     } else if (type === "details") {
       modalObj0.showTaskDetails = !modalObj0.showTaskDetails;
+      modalObj0.showDelEditOptions = false;
+    } else if (type === "options") {
+      modalObj0.showDelEditOptions = !modalObj0.showDelEditOptions;
+    } else if (type === "detailsOffEditTaskOn") {
+      modalObj0.showDelEditOptions = !modalObj0.showDelEditOptions;
+      modalObj0.showTaskDetails = !modalObj0.showTaskDetails;
+      modalObj0.showEditItemForm = !modalObj0.showEditItemForm;
+    } else if (type === "delConfirmTaskDetails") {
+      modalObj0.showTaskDetails = !modalObj0.showTaskDetails;
+      modalObj0.toggleDelConfirm = !modalObj0.toggleDelConfirm;
+    } else if (type === "removeDelConfirm") {
+      modalObj0.toggleDelConfirm = false;
+    } else if (type === "showBoardForm") {
+      modalObj0.toggleAddBoardForm = !modalObj0.toggleAddBoardForm;
+    } else if (type === "editBoardForm") {
+      modalObj0.toggleEditBoardForm = !modalObj0.toggleEditBoardForm;
     }
     SetModalObjState(modalObj0);
   };
