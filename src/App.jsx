@@ -16,6 +16,7 @@ import DelTaskConfirmModal from "./components/UI/DelTaskConfirmModal";
 import EditTask from "./components/inputs/taskForm/EditTask";
 import AddNewBoard from "./components/inputs/boardForm/AddNewBoard";
 import EditBoard from "./components/inputs/boardForm/EditBoard";
+import DelBoardConfirmModal from "./components/UI/DelBoardConfirmModal";
 
 function App() {
   const { isDesktopHandler } = useContext(UICtx);
@@ -24,9 +25,10 @@ function App() {
     showEditItemForm,
     showAddItemForm,
     showTaskDetails,
-    toggleDelConfirm,
+    toggleDelTaskConfirm,
     toggleAddBoardForm,
     toggleEditBoardForm,
+    showDelBoardConfirm,
   } = modalObj;
   // function to determine whether it's desktop or not. UICtx
   isDesktopHandler();
@@ -53,11 +55,13 @@ function App() {
       {showTaskDetails && <CardDetails />}
 
       {/* del confirm modal */}
-      {toggleDelConfirm && <DelTaskConfirmModal />}
+      {toggleDelTaskConfirm && <DelTaskConfirmModal />}
+      {showDelBoardConfirm && <DelBoardConfirmModal />}
 
       {/* add new bord modal */}
       {toggleAddBoardForm && <AddNewBoard />}
 
+      {/* edit board modal */}
       {toggleEditBoardForm && <EditBoard />}
     </div>
   );

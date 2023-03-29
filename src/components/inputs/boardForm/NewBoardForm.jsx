@@ -4,6 +4,7 @@ import addNewBoardHandlerFn from "../../../hooks/addNewBoardHandlerFn";
 import { useContext } from "react";
 import DataCtx from "../../../context/dataContext/DataCtx";
 import ModalCtx from "../../../context/modalContext/ModalCtx";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 // type -> 'edit', 'add'
 export default function NewBoardForm({ defaultFormValues, type, boardIndex }) {
@@ -19,10 +20,9 @@ export default function NewBoardForm({ defaultFormValues, type, boardIndex }) {
     control,
   });
 
+  // get auto animate hook to use
+  const [animationParent] = useAutoAnimate();
   const submitHandler = (baordObjData) => {
-    /////
-    console.log(baordObjData);
-
     addNewBoardHandlerFn(data, setData, baordObjData, type, boardIndex);
 
     switch (type) {
@@ -53,7 +53,7 @@ export default function NewBoardForm({ defaultFormValues, type, boardIndex }) {
           />
         </div>
 
-        <div id="col_section" className={css.flex_1_col}>
+        <div id="col_section" className={css.flex_1_col} ref={animationParent}>
           <div id="col_title">Columns List</div>
           {fields.map((field, index) => (
             <div id="col_section" key={field.id} className={css.flex_1}>
@@ -62,7 +62,11 @@ export default function NewBoardForm({ defaultFormValues, type, boardIndex }) {
                 type="text"
                 id={field.id}
               />
-              <button className="btn" onClick={() => remove(index)}>
+              <button
+                className="btn"
+                type="button"
+                onClick={() => remove(index)}
+              >
                 del
               </button>
             </div>

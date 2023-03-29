@@ -3,7 +3,11 @@ import DataCtx from "../../context/dataContext/DataCtx";
 import dragCardHandlerFn from "../../hooks/dragCardHandlerFn";
 import Card from "./Card";
 import css from "./Col.module.css";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 export default function Col({ colItem, colIndex }) {
+  // animation library
+  const [animationParent] = useAutoAnimate();
+
   // get data and set data from context to pass to function dragCardHandlerFn
   const { data, setData } = useContext(DataCtx);
 
@@ -37,7 +41,11 @@ export default function Col({ colItem, colIndex }) {
         id="col_name"
         className="header_3"
       >{`${colItem.name} (${taskCount})`}</div>
-      <div id="tasks_section" className={css.tasks_section}>
+      <div
+        id="tasks_section"
+        className={css.tasks_section}
+        ref={animationParent}
+      >
         {colItem.tasks.map((item, index) => (
           <Card
             key={index}

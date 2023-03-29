@@ -34,7 +34,7 @@ export default function () {
   };
 
   const showDeleteConfirmHandler = () => {
-    return;
+    toggleHandler("delBoardConfirm");
   };
   return (
     <div id="topbar_section">

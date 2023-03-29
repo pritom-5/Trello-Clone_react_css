@@ -17,7 +17,7 @@ export default function EditTask() {
   const taskCardInfo =
     data.boards[boardIndex].columns[colIndex].tasks[cardIndex];
   return (
-    <Modal modalFn={toggleHandler} type="editTask">
+    <Modal modalFn={toggleHandler} type="detailsOffEditTaskOn">
       <TaskForm
         submitButtonText="Edit Task"
         title="Edit Task"

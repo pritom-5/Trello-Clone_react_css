@@ -1,3 +1,4 @@
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useContext } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import DataCtx from "../../../context/dataContext/DataCtx";
@@ -23,6 +24,8 @@ export default function TaskForm({
     control,
   });
 
+  // auto animation hook
+  const [animationParent] = useAutoAnimate();
   // context to get data and set data
   const { data: dataObj, setData } = useContext(DataCtx);
   const { toggleHandler } = useContext(ModalCtx);
@@ -67,12 +70,16 @@ export default function TaskForm({
           <textarea {...register("description")} rows="5" />
         </div>
         {/* subtasks input */}
-        <div id="subtasks_section" className={css.flex_1_col}>
+        <div
+          id="subtasks_section"
+          className={css.flex_1_col}
+          ref={animationParent}
+        >
           <div id="subtasks_title" className="header_3">
             Subtasks
           </div>
           {fields.map((field, index) => (
-            <div id="subtasks_section" key={field.id} className={css.flex_1}>
+            <div id="subtask_section" key={field.id} className={css.flex_1}>
               <input
                 {...register(`subtasks.${index}.title`, { required: true })}
               />

@@ -4,18 +4,22 @@ import _ from "lodash";
 export default function addNewBoardHandlerFn(
   data,
   setData,
-  newBoardObj,
+  newBoardObj = {},
   type,
   boardIndex = 0
 ) {
   // deep copy
   const data0 = _.cloneDeep(data);
+
   switch (type) {
     case "add":
       data0.boards.push(newBoardObj);
       break;
     case "edit":
       data0.boards[boardIndex] = newBoardObj;
+      break;
+    case "delete":
+      data0.boards.splice(boardIndex, 1);
       break;
     default:
       break;

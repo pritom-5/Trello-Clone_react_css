@@ -7,9 +7,10 @@ const modalCtxDefault = {
     showNav: false,
     showTaskDetails: false,
     showDelEditOptions: false,
-    toggleDelConfirm: false,
+    toggleDelTaskConfirm: false,
     toggleAddBoardForm: false,
     toggleEditBoardForm: false,
+    showDelBoardConfirm: false,
   },
   toggleHandler: (type) => {},
 };
